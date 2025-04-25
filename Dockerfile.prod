@@ -21,7 +21,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copia os arquivos construídos pelo Angular para o Nginx servir
-COPY --from=build /app/dist/atividade-front /usr/share/nginx/html
+COPY --from=build /app/dist/atividade-front/browser/ /usr/share/nginx/html
 
 # Comando para rodar o Nginx
 CMD ["nginx", "-g", "daemon off;"]
