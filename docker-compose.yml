@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  app-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:rw
+    container_name: Frontend-prod
+    expose:
+      - "8300"
+    ports:
+      - "8300:80"
+
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    container_name: Frontend-dev
+    expose:
+      - "8200"
+    ports:
+      - "8200:8200"
